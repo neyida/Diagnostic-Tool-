@@ -1,0 +1,58 @@
+.quizPage{
+    background-color: #fce4ec; /* A cute background color */
+    color: #333;
+    font-family: 'Comic Sans MS', cursive, sans-serif; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+.quizQuestions {
+    display: block;
+    margin: 20px auto;
+    max-width: 100% ;
+    height: auto;
+    border: 2px solid #333 ;
+    border-radius: 10px;
+}
+   
+.quizAnswers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quizAnswers img {
+    margin: 20px 0; 
+    max-width: 80%; 
+    height: auto; 
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0; 
+    font-family: 'Comic Sans MS', cursive, sans-serif; 
+
+
+}
+.submitButton{
+ 
+    background-color: #ff4081; 
+    color: #fff; 
+    padding: 10px 20px; 
+    border: none; /* Remove default button border */
+    border-radius: 5px; 
+    cursor: pointer; /* Add a pointer cursor on hover for user feedback */
+    font-size: 16px; 
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+    
+}
+.submitButton:hover {
+    background-color: #d81b60; /* Darker color on hover for a subtle effect */
+}
