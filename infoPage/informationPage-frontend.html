@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="informationPage.css">
+    <title>informationPage</title>
+    <script src="informationPage.js"></script>
+</head>
+<body>
+
+        <div class="send-message">
+            <h2>Get Your Results!</h2>
+            <form id="messageForm" onsubmit="submitForm(event)">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+    
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+    
+                <label for="parentEmail">Parent Email:</label>
+                <input type="email" id="parentEmail" name="parentEmail" required>
+    
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
+    
+                <label for="gradeLevel">Grade Level:</label>
+                <input type="text" id="gradeLevel" name="gradeLevel" required>
+    
+                <label for="satPsat">Have you taken a PSAT or SAT before?</label>
+                <select id="satPsat" name="satPsat" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+    
+                <button type="submit">Submit</button>
+            </form>
+    
+            <p id="thankYouMessage" style="display: none;">Thank you for submitting!</p>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+    

@@ -1,15 +1,12 @@
 {
   "name": "diagnostic-tool-",
   "version": "1.0.0",
-  "description": "",
-  "main": "quiz.js",
+  "description": "diagnostic tool for POP potential customers",
+  "main": "quiz-frontend.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "firebase": "^10.7.1"
-  }
+  "author": "Neyida and Chase",
+  "license": "ISC"
 }
