@@ -42,8 +42,7 @@ function getResults() {
             result.textContent = "You got " + correctness.filter(Boolean).length + " out of " + correctness.length + " correct!";
                 
         }
-        window.location.href = 'informationPage-frontend.html';
-
+    
 }
 
 /**
@@ -128,7 +127,7 @@ function createQuizPage() {
     // Append quizPage div to the DOM
     document.body.appendChild(aestheticDiv);
     index++;
-
+    console.log(index)
 }
 function createSubmitButton(){
     // Create submitButton button
