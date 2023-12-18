@@ -1,5 +1,6 @@
 let correctness = [];
-let answers = ["option1", "option1", "option4", "option1", "option4", "option2", "option4", "option3", "option4", "option1"];
+let correctAnswers = ["option1", "option1", "option4", "option1", "option4", "option2", "option4", "option3", "option4", "option1"];
+let chosenAnswers = [];
 let options = [
     ["8x^2-7x-4", "8x^2+7x-4", "8x^4-7x^2-4", "8x^4+7x^2-4"],
     ["5x^2-2x+3", "5x^2+2x+3", "-x^2-2x-11", "-x^2+2x-11"],
@@ -38,10 +39,14 @@ function getResults() {
     
 }
 
+/**
+ * Retrieves the selected option from a group of radio buttons.
+ * @returns {string} The value of the selected option.
+ */
 function getSelectedOption() {
+    fo
     let optionElements = document.getElementsByName('options' + (index + 1));
     let selectedOption;
-
     for (let i = 0; i < optionElements.length; i++) {
         if (optionElements[i].checked) {
             selectedOption = optionElements[i].value;
@@ -50,14 +55,6 @@ function getSelectedOption() {
     }
 
     return selectedOption;
-}
-let timesRan = 0
-function setUp(){
-    console.log(timesRan+= 1)
-    console.log(index)
-
-    // Set answer options
-
 }
 
 function outputCSV(filepath){

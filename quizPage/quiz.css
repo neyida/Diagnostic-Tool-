@@ -16,7 +16,7 @@
   margin: 20px auto;
   max-width: 80%; 
   height: auto;
-  border: 2px solid #d81b60; 
+  border: 2px solid #c42d2d; 
   border-radius: 10px;
   padding: 20px; 
   box-sizing: border-box;
@@ -45,7 +45,7 @@ body {
 }
 
 .submitButton {
-  background-color: #d81b60; 
+  background-color: #c42d2d; 
   color: #fff;
   padding: 15px 30px; 
   border: none;
@@ -112,7 +112,7 @@ z-index: 1000;
 background: #9faab7;
 }
 .option-input:checked {
-background: #d81b60;
+background: #c42d2d;
 }
 .option-input:checked::before {
 width: 40px;
@@ -127,7 +127,7 @@ justify-content:center;
 font-family:'Font Awesome 5 Free';
 }
 .option-input:checked::after {
-background: #d81b60;
+background: #912121;
 content: '';
 display: block;
 position: relative;
@@ -150,5 +150,5 @@ h1{
 }
 
 .aesthetic{
-  border: 2px solid #d81b60;
+  border: 2px solid #c42d2d;
 }
