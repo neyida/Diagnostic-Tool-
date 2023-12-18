@@ -1,7 +1,17 @@
 let correctness = [];
-let answers = ["option1", "option4", "option2"];
-let question = ["What is the first positive number?", "What is 2 + 3?", "What is 158-1?"];
-let options = [[1, 2, 3, 4], [1, 2, 3, 5], [156, 157, 158, 159]];
+let answers = ["option1", "option1", "option4", "option1", "option4", "option2", "option4", "option3", "option4", "option1"];
+let options = [
+    ["8x^2-7x-4", "8x^2+7x-4", "8x^4-7x^2-4", "8x^4+7x^2-4"],
+    ["5x^2-2x+3", "5x^2+2x+3", "-x^2-2x-11", "-x^2+2x-11"],
+    ["x-4", "x-2", "x-1", "x+4"],
+    ["(x-3)(x-2)", "(x-5)(x-1)", "(x+6)(x-1)", "(x-3)(x+2)"],
+    ["$3.50", "$4.00", "$4.50", "$5.00"],
+    ["5x", "1.05x", "1.005x", "0.5x"],
+    ["-16", "-14", "14", "16"],
+    ["-7", "-5", "3", "9"],
+    ["-5", "0", "5/2", "4"],
+    ["y= - ⅔ x +3", "y= -3/2x +3", "y=  ⅔ x +3", "y= - 3/2x +3"]
+];
 let index = 0
 
 /**
@@ -24,10 +34,10 @@ function setQuestion() {
         }
         index+= 1;
         
-        if(index < question.length){
+        if(index < answers.length){
             setUp();
         }
-        if (index === question.length) {
+        if (index === answers.length) {
             let result = document.getElementById('result');
             result.textContent = "You got " + correctness.filter(Boolean).length + " out of " + correctness.length + " correct!";
                 
@@ -54,7 +64,7 @@ function setUp(){
     console.log(index)
     // Set question image
     let questionImg = document.getElementById('questionImg');
-    questionImg.src = "imgQuestion/question" + (index + 1) + ".png";
+    questionImg.src = "./imgQuestion/question-" + (index + 1) + "-Diag.png";
 
     // TODO: Add code to set the question image
 
