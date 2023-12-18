@@ -32,16 +32,8 @@ function getResults() {
         } else {
             correctness.push(false);
         }
-        
-        if(index < answers.length){
-            setUp();
-        }
-        if (index === answers.length) {
-            let result = document.getElementById('result');
-            result.textContent = "You got " + correctness.filter(Boolean).length + " out of " + correctness.length + " correct!";
-                
-        }
-        window.location.href = 'informationPage-frontend.html';
+        // Removes current quiz page
+        window.location.href = '../infoPage/informationPage-frontend.html';
 
     
 }
