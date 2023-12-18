@@ -13,16 +13,20 @@ function submitForm(event) {
     };
 
     // Thanlk you message
-    const thankYouMessage = `Thank you, ${formData.firstName} ${formData.lastName}, for submitting your diagnostic! We are working on analyzing your information. We should reach out to you soon with personalized results from your Diagnostic.`;
-
+    const thankYouMessage = `Thank you, ${formData.firstName} ${formData.lastName}, for submitting your diagnostic! 
+    
+    Our team is diligently analyzing the information you provided. Expect to hear from us soon with personalized results tailored to your diagnostic.
+    
+    In the meantime, you will be redirected to our homepage shortly to explore more information about our programs and offerings.`;
+    
     // Display thank you message
     document.getElementById('messageForm').style.display = 'none';
     const thankYouElement = document.getElementById('thankYouMessage');
     thankYouElement.textContent = thankYouMessage;
     thankYouElement.style.display = 'block';
 
-    //redirect to a different page after 10 seconds 
+    //redirect to a different page after 12 seconds 
     setTimeout(() => {
         window.location.href = 'https://peaceofpilearning.com/';
-    }, 10000);
+    }, 12000);
 }
