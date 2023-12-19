@@ -6,15 +6,14 @@
   flex-direction: column;
   justify-content: center;
   /*min-height: 100vh;*/
-  padding-left: auto;
-  padding-right: auto;
+  margin: 0 100px;
 
 }
 
 .quizQuestions {
   display: block;
   margin: 20px auto;
-  max-width: 80%; 
+  max-width: 100%; 
   height: auto;
   border: 2px solid #c42d2d; 
   border-radius: 10px;
@@ -60,7 +59,7 @@ body {
 }
 
 #questionImg{
-  max-width: 100%;
+  min-width: 300px;
   height: auto;
 }
 
@@ -149,6 +148,8 @@ h1{
   justify-content: center;
 }
 
-.aesthetic{
-  border: 2px solid #c42d2d;
+
+hr{
+  border: 1px solid #c42d2d;
+  width: 100%;
 }
