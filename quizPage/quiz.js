@@ -1,6 +1,5 @@
 let correctness = [];
 let correctAnswers = ["option1", "option1", "option4", "option1", "option4", "option2", "option4", "option3", "option4", "option1"];
-let chosenAnswers = [];
 let options = [
     ["8x^2-7x-4", "8x^2+7x-4", "8x^4-7x^2-4", "8x^4+7x^2-4"],
     ["5x^2-2x+3", "5x^2+2x+3", "-x^2-2x-11", "-x^2+2x-11"],
@@ -19,20 +18,15 @@ let index = 0
  * Sets the question, question image, and answer options for the quiz.
  */
 function getResults() {
-    
-        let correctOption = answers[index];
-
-        // Collects current data from the quiz object
-        let chosenAnswer = getSelectedOption();
-        console.log(chosenAnswer);
-        // Stores correctness in an array
-        console.log(correctOption);
-        console.log(chosenAnswer === correctOption);
-        if (chosenAnswer === correctOption) {
-            correctness.push(true);
-        } else {
-            correctness.push(false);
+        let chosenAnswers = getSelectedOption();
+        for(let i = 0; i < chosenAnswers.length; i++){
+            if (chosenAnswer === correctOption) {
+                correctness.push(true);
+            } else {
+                correctness.push(false);
+            }
         }
+        
         // Removes current quiz page
         window.location.href = '../infoPage/informationPage-frontend.html';
 
@@ -44,17 +38,18 @@ function getResults() {
  * @returns {string} The value of the selected option.
  */
 function getSelectedOption() {
-    fo
-    let optionElements = document.getElementsByName('options' + (index + 1));
-    let selectedOption;
-    for (let i = 0; i < optionElements.length; i++) {
-        if (optionElements[i].checked) {
-            selectedOption = optionElements[i].value;
-            break;
+    let chosenAnswers = [];
+    for (let i = 0; i < correctAnswers.length; i++) {
+        let optionElements = document.getElementsByName('question' + (i + 1));
+        console.log(optionElements);
+        for(let optionNum = 0; optionNum < 4; optionNum++){
+            if (optionElements[i].checked) {
+                chosenAnswers.push(optionElements[i].value);
+                break;
+            }
         }
     }
-
-    return selectedOption;
+    return chosenAnswers;
 }
 
 function outputCSV(filepath){
@@ -104,8 +99,8 @@ function createQuizPage() {
         let inputElement = document.createElement('input');
         inputElement.type = 'radio';
         inputElement.classList.add('option-input', 'radio');
-        inputElement.name = 'example';
-        inputElement.checked = true;
+        inputElement.name = 'question' + (index + 1);
+        //inputElement.checked = true;
         labelElement.appendChild(inputElement);
 
         let spanElement = document.createElement('span');
@@ -128,9 +123,10 @@ function createQuizPage() {
     });
 
 
-
     // Append quizPage div to the DOM
     document.body.appendChild(aestheticDiv);
+    // Create horizontal line break
+    document.body.appendChild(document.createElement('hr'));
     index++;
     console.log(index)
 }
