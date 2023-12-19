@@ -116,6 +116,17 @@ function createQuizPage() {
         pyDiv.appendChild(labelElement);
     }
 
+     // Create chyron div
+     //NEWWWWW THING 
+    let chyronDiv = document.createElement('div');
+    chyronDiv.classList.add('chyron');
+     chyronDiv.textContent = 'Question #';
+     document.body.appendChild(chyronDiv);
+
+     window.addEventListener('scroll', function () {
+        updateChyron(chyronDiv, index);
+    });
+
 
 
     // Append quizPage div to the DOM
@@ -131,4 +142,17 @@ function createSubmitButton(){
     submitButton.textContent = 'Submit';
     submitButton.onclick = getResults;
     document.body.appendChild(submitButton);
+}
+
+function updateChyron(chyronDiv, index) {
+    const totalQuestions = 10;
+    // Get the current question index based on scroll position
+    let currentQuestionIndex = Math.ceil(window.scrollY / window.innerHeight);
+    
+    // Update the chyron content based on the current question index
+    if (currentQuestionIndex === totalQuestions - 1) {
+        chyronDiv.textContent = 'Scroll to Submit';
+    } else {
+        chyronDiv.textContent = 'Question ' + (currentQuestionIndex + 1);
+    }
 }
