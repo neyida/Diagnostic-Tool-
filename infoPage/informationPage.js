@@ -12,7 +12,7 @@ function submitForm(event) {
         satPsat: document.getElementById('satPsat').value,
     };
 
-    // Thanlk you message
+    // Thank you message
     const thankYouMessage = `Thank you, ${formData.firstName} ${formData.lastName}, for submitting your diagnostic! 
     
     Our team is diligently analyzing the information you provided. Expect to hear from us soon with personalized results tailored to your diagnostic.

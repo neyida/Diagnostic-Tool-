@@ -14,43 +14,6 @@ let options = [
 ];
 let index = 0
 
-/**
- * Sets the question, question image, and answer options for the quiz.
- */
-function getResults() {
-        let chosenAnswers = getSelectedOption();
-        for(let i = 0; i < chosenAnswers.length; i++){
-            if (chosenAnswers[i] === correctAnswers[i]) {
-                correctness.push(true);
-            } else {
-                correctness.push(false);
-            }
-        }
-        
-        // Removes current quiz page
-        window.location.href = '../infoPage/informationPage-frontend.html';
-
-    
-}
-
-/**
- * Retrieves the selected option from a group of radio buttons.
- * @returns {string} The value of the selected option.
- */
-function getSelectedOption() {
-    let chosenAnswers = [];
-    for (let i = 0; i < correctAnswers.length; i++) {
-        let optionElements = document.getElementsByName('question' + (i + 1));
-        console.log(optionElements);
-        for(let optionNum = 0; optionNum < 4; optionNum++){
-            if (optionElements[optionNum].checked) {
-                chosenAnswers.push(optionElements[optionNum].value);
-                break;
-            }
-        }
-    }
-    return chosenAnswers;
-}
 
 function outputCSV(filepath){
     
@@ -61,6 +24,12 @@ function outputCSV(filepath){
         csvContent += row + "\r\n";
     });
 }
+
+
+
+/**
+ * Creates a quiz page with questions and answers.
+ */
 function createQuizPage() {
     // create greater div for border
     let aestheticDiv = document.createElement('div');
@@ -115,7 +84,7 @@ function createQuizPage() {
      //NEWWWWW THING 
     let chyronDiv = document.createElement('div');
     chyronDiv.classList.add('chyron');
-     chyronDiv.textContent = 'Question #';
+     chyronDiv.textContent = 'Question 1';
      document.body.appendChild(chyronDiv);
 
      window.addEventListener('scroll', function () {
@@ -130,31 +99,71 @@ function createQuizPage() {
     index++;
     console.log(index)
 }
+
+
 function createSubmitButton(){
     // Create submitButton button
     let submitButton = document.createElement('button');
     submitButton.classList.add('submitButton');
     submitButton.id = 'next';
     submitButton.textContent = 'Submit';
-    submitButton.onclick = getResults;
-    document.getElementsByClassName("quizBody").appendChild(submitButton);
+    document.getElementById("quizBody").appendChild(submitButton);
+}
+
+/**
+ * Retrieves the selected option from a group of radio buttons.
+ * @returns {string} The value of the selected option.
+ */
+function getSelectedOption() {
+    let chosenAnswers = [];
+    for (let i = 0; i < correctAnswers.length; i++) {
+        let optionElements = document.getElementsByName('question' + (i + 1));
+        console.log(optionElements);
+        for(let optionNum = 0; optionNum < 4; optionNum++){
+            if (optionElements[optionNum].checked) {
+                chosenAnswers.push(optionElements[optionNum].value);
+                break;
+            }
+        }
+    }
+    return chosenAnswers;
+}
+
+/**
+ * Sets the question, question image, and answer options for the quiz.
+ */
+function getResults() {
+    let chosenAnswers = getSelectedOption();
+    for(let i = 0; i < chosenAnswers.length; i++){
+        if (chosenAnswers[i] === correctAnswers[i]) {
+            correctness.push(true);
+        } else {
+            correctness.push(false);
+        }
+    }
+    window.alert(correctness);
+    // Moves to info page after submission to send results to
+    window.location.href = '../infoPage/informationPage-frontend.html';
+
+
 }
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
-  }
+}
   
-  /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-  function closeNav() {
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
-  }
+}
+
 
 function updateChyron(chyronDiv, index) {
     const totalQuestions = 10;
     // Get the current question index based on scroll position
-    let currentQuestionIndex = Math.ceil(window.scrollY / window.innerHeight);
+    let currentQuestionIndex = Math.ceil(((window.scrollY) / window.innerHeight)*1.66);
     
     // Update the chyron content based on the current question index
     if (currentQuestionIndex === totalQuestions - 1) {
