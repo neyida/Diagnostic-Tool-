@@ -167,7 +167,7 @@ function updateChyron(chyronDiv, index) {
     
     // Update the chyron content based on the current question index
     if (currentQuestionIndex === totalQuestions - 1) {
-        chyronDiv.textContent = 'Scroll to Submit';
+        chyronDiv.textContent = 'Submit';
     } else {
         chyronDiv.textContent = 'Question ' + (currentQuestionIndex + 1);
     }
