@@ -20,7 +20,7 @@ let index = 0
 function getResults() {
         let chosenAnswers = getSelectedOption();
         for(let i = 0; i < chosenAnswers.length; i++){
-            if (chosenAnswer === correctOption) {
+            if (chosenAnswers[i] === correctAnswers[i]) {
                 correctness.push(true);
             } else {
                 correctness.push(false);
@@ -43,8 +43,8 @@ function getSelectedOption() {
         let optionElements = document.getElementsByName('question' + (i + 1));
         console.log(optionElements);
         for(let optionNum = 0; optionNum < 4; optionNum++){
-            if (optionElements[i].checked) {
-                chosenAnswers.push(optionElements[i].value);
+            if (optionElements[optionNum].checked) {
+                chosenAnswers.push(optionElements[optionNum].value);
                 break;
             }
         }
@@ -111,11 +111,11 @@ function createQuizPage() {
         pyDiv.appendChild(labelElement);
     }
 
-
+    let quizBody = document.getElementById("quizBody");
     // Append quizPage div to the DOM
-    document.body.appendChild(aestheticDiv);
+    quizBody.appendChild(aestheticDiv);
     // Create horizontal line break
-    document.body.appendChild(document.createElement('hr'));
+    quizBody.appendChild(document.createElement('hr'));
     index++;
     console.log(index)
 }
@@ -126,5 +126,16 @@ function createSubmitButton(){
     submitButton.id = 'next';
     submitButton.textContent = 'Submit';
     submitButton.onclick = getResults;
-    document.body.appendChild(submitButton);
+    document.getElementsByClassName("quizBody").appendChild(submitButton);
 }
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+  
+  /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
