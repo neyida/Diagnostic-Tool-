@@ -8,5 +8,12 @@
   },
   "keywords": [],
   "author": "Neyida and Chase",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^10.7.1",
+    "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
 }
