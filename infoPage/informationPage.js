@@ -18,7 +18,18 @@ function submitForm(event) {
   Our team is diligently analyzing the information you provided. Expect to hear from us soon with personalized results tailored to your diagnostic.
   
   In the meantime, you will be redirected to our homepage shortly to explore more information about our programs and offerings.`;
-  
+  // Assuming you have an input field with id 'userInput' and a button with id 'submitButton'
+
+  fetch('http://localhost:3000/storeUserInput', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ userInput: formData }),
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
   // Display thank you message
   document.getElementById('messageForm').style.display = 'none';
   const thankYouElement = document.getElementById('thankYouMessage');
@@ -26,7 +37,7 @@ function submitForm(event) {
   thankYouElement.style.display = 'block';
 
   //redirect to a different page after 12 seconds 
-  setTimeout(() => {
+  /*setTimeout(() => {
       window.location.href = 'https://peaceofpilearning.com/';
-  }, 12000);
+  }, 12000);*/
 }
