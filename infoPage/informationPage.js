@@ -5,7 +5,7 @@ function submitForm(event) {
   const formData = {
       firstName: document.getElementById('firstName').value,
       lastName: document.getElementById('lastName').value,
-      email: document.getElementById('email').value,
+      studentEmail: document.getElementById('studentEmail').value,
       parentEmail: document.getElementById('parentEmail').value,
       phoneNumber: document.getElementById('phoneNumber').value,
       gradeLevel: document.getElementById('gradeLevel').value,
@@ -18,14 +18,13 @@ function submitForm(event) {
   Our team is diligently analyzing the information you provided. Expect to hear from us soon with personalized results tailored to your diagnostic.
   
   In the meantime, you will be redirected to our homepage shortly to explore more information about our programs and offerings.`;
-  // Assuming you have an input field with id 'userInput' and a button with id 'submitButton'
 
-  fetch('http://localhost:3000/storeUserInput', {
+  fetch('http://localhost:3000/storeUserInputs', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ userInput: formData }),
+    body: JSON.stringify({ formData: formData }),
   })
   .then(response => response.json())
   .then(data => console.log(data))

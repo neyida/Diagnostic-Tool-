@@ -24,13 +24,13 @@ const firebaseApp = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(firebaseApp);
 const db = getFirestore(firebaseApp)
 // Endpoint to store user input in Firebase
-app.post('/storeUserInput', async (req, res) => {
+app.post('/storeUserInputs', async (req, res) => {
   try {
-    const userInput = req.body.userInput;
+    const formData = req.body.formData;
 
     // Store userInput in Firestore
-    const docRef = await addDoc(collection(db, 'userInput'), {
-      userInput: userInput
+    const docRef = await addDoc(collection(db, 'users', formData.studentEmail, 'studentInfo'), {
+      formData: formData
     });
     console.log('Document written with ID: ', docRef.id);
     res.status(200).json(`User input stored successfully with ID: ${docRef.id}`);
@@ -38,7 +38,6 @@ app.post('/storeUserInput', async (req, res) => {
     res.status(500).json({ error: 'Error storing user input: ' + error });
   }
 });
-
 // Other endpoints for data retrieval if needed
 
 const PORT = process.env.PORT || 3000;
