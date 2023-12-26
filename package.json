@@ -7,13 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Neyida and Chase",
+  "author": "Neyida Michel and Chase Geyer",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "firebase": "^10.7.1",
     "http-server": "^14.1.1",
+    "request-ip": "^3.3.0",
     "webpack": "^5.89.0"
   },
   "devDependencies": {

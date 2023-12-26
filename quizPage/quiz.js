@@ -1,29 +1,19 @@
 let correctness = [];
-let correctAnswers = ["option1", "option1", "option4", "option1", "option4", "option2", "option4", "option3", "option4", "option1"];
+const correctAnswers = ["A", "A", "A", "D", "D", "B", "D", "C", "D", "B"];
 let options = [
-    ["8x^2-7x-4", "8x^2+7x-4", "8x^4-7x^2-4", "8x^4+7x^2-4"],
-    ["5x^2-2x+3", "5x^2+2x+3", "-x^2-2x-11", "-x^2+2x-11"],
-    ["x-4", "x-2", "x-1", "x+4"],
-    ["(x-3)(x-2)", "(x-5)(x-1)", "(x+6)(x-1)", "(x-3)(x+2)"],
-    ["$3.50", "$4.00", "$4.50", "$5.00"],
-    ["5x", "1.05x", "1.005x", "0.5x"],
-    ["-16", "-14", "14", "16"],
-    ["-7", "-5", "3", "9"],
-    ["-5", "0", "5/2", "4"],
-    ["y= - ⅔ x +3", "y= -3/2x +3", "y=  ⅔ x +3", "y= - 3/2x +3"]
+    ["A", "B", "C", "D"],
+    ["A", "B", "C", "D"],
+    ["A", "B", "C", "D"],
+    ["A", "B", "C", "D"],
+    ["A", "B", "C", "D"],
+    ["A", "B", "C", "D"],
+    ["A", "B", "C", "D"],
+    ["A", "B", "C", "D"],
+    ["A", "B", "C", "D"],
+    ["A", "B", "C", "D"]
 ];
+
 let index = 0
-
-
-function outputCSV(filepath){
-    
-    let csvContent = "data:text/csv;charset=utf-8,";
-    
-    rows.forEach(function(rowArray) {
-        let row = rowArray.join(",");
-        csvContent += row + "\r\n";
-    });
-}
 
 
 
@@ -118,10 +108,16 @@ function getSelectedOption() {
     let chosenAnswers = [];
     for (let i = 0; i < correctAnswers.length; i++) {
         let optionElements = document.getElementsByName('question' + (i + 1));
-        console.log(optionElements);
-        for(let optionNum = 0; optionNum < 4; optionNum++){
+
+        for (let optionNum = 0; optionNum < 4; optionNum++) {
             if (optionElements[optionNum].checked) {
-                chosenAnswers.push(optionElements[optionNum].value);
+                // Assuming the label text contains the letter (A, B, C, D)
+                const labelElement = optionElements[optionNum].closest('label');
+                const labelText = labelElement.textContent.trim();
+                
+                // Extract the letter from the label text
+                const selectedLetter = labelText.charAt(0).toUpperCase();
+                chosenAnswers.push(selectedLetter);
                 break;
             }
         }
@@ -133,7 +129,7 @@ function getSelectedOption() {
  * Sets the question, question image, and answer options for the quiz.
  */
 function getResults() {
-    let chosenAnswers = getSelectedOption();
+    const chosenAnswers = getSelectedOption();
     for(let i = 0; i < chosenAnswers.length; i++){
         if (chosenAnswers[i] === correctAnswers[i]) {
             correctness.push(true);
@@ -141,18 +137,19 @@ function getResults() {
             correctness.push(false);
         }
     }
+    console.log(correctness, chosenAnswers, correctAnswers);
     const quizResults = {
-        correctness: correctness,
-        chosenAnswers: chosenAnswers,
-        correctAnswers: correctAnswers
+        answersCorrect: correctness,
+        answersChosen: chosenAnswers,
+        answerKey: correctAnswers
     }
-
+    console.log(quizResults)
     fetch('http://localhost:3000/storeQuizResults', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ formData: formData }),
+    body: JSON.stringify({quizResults }),
   })
   .then(response => response.json())
   .then(data => console.log(data))

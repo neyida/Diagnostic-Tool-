@@ -4,11 +4,14 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 //import { getAnalytics } from "firebase/analytics";
 import cors from 'cors';
+import requestIp from 'request-ip';
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(requestIp.mw());
 
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBw51dfHPhBl9_L5PEhtqLAAgL_44zIgyY",
   authDomain: "diagnostic-page-8c6e0.firebaseapp.com",
@@ -27,9 +30,9 @@ const db = getFirestore(firebaseApp)
 app.post('/storeUserInputs', async (req, res) => {
   try {
     const formData = req.body.formData;
-
+    const clientIp = req.clientIp;
     // Store userInput in Firestore
-    const docRef = await addDoc(collection(db, 'users', formData.studentEmail, 'studentInfo'), {
+    const docRef = await addDoc(collection(db, 'users', clientIp, 'studentInfo'), {
       formData: formData
     });
     console.log('Document written with ID: ', docRef.id);
@@ -41,11 +44,12 @@ app.post('/storeUserInputs', async (req, res) => {
 // Other endpoints for data retrieval if needed
 app.post('/storeQuizResults', async (req, res) => {
   try {
-    const formData = req.body.formData;
-
+    const quizResults = req.body.quizResults;
+    console.log(quizResults);
+    const clientIp = req.clientIp;
     // Store userInput in Firestore
-    const docRef = await addDoc(collection(db, 'users', formData.studentEmail, 'studentInfo'), {
-      formData: formData
+    const docRef = await addDoc(collection(db, 'users', clientIp, 'quizResults'), {
+      quizResults
     });
     console.log('Document written with ID: ', docRef.id);
     res.status(200).json(`User input stored successfully with ID: ${docRef.id}`);
