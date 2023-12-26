@@ -39,7 +39,20 @@ app.post('/storeUserInputs', async (req, res) => {
   }
 });
 // Other endpoints for data retrieval if needed
+app.post('/storeQuizResults', async (req, res) => {
+  try {
+    const formData = req.body.formData;
 
+    // Store userInput in Firestore
+    const docRef = await addDoc(collection(db, 'users', formData.studentEmail, 'studentInfo'), {
+      formData: formData
+    });
+    console.log('Document written with ID: ', docRef.id);
+    res.status(200).json(`User input stored successfully with ID: ${docRef.id}`);
+  } catch (error) {
+    res.status(500).json({ error: 'Error storing user input: ' + error });
+  }
+});
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

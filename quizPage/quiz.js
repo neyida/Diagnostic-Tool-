@@ -141,6 +141,22 @@ function getResults() {
             correctness.push(false);
         }
     }
+    const quizResults = {
+        correctness: correctness,
+        chosenAnswers: chosenAnswers,
+        correctAnswers: correctAnswers
+    }
+
+    fetch('http://localhost:3000/storeQuizResults', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ formData: formData }),
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
     window.alert(correctness);
     // Moves to info page after submission to send results to
     window.location.href = '../infoPage/informationPage-frontend.html';
