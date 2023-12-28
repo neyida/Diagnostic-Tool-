@@ -24,8 +24,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(firebaseApp);
+
 const db = getFirestore(firebaseApp)
+
 // Endpoint to store user input in Firebase
 app.post('/storeUserInputs', async (req, res) => {
   try {
@@ -41,11 +42,12 @@ app.post('/storeUserInputs', async (req, res) => {
     res.status(500).json({ error: 'Error storing user input: ' + error });
   }
 });
+
 // Other endpoints for data retrieval if needed
 app.post('/storeQuizResults', async (req, res) => {
   try {
     const quizResults = req.body.quizResults;
-    console.log(quizResults);
+    //console.log(quizResults);
     const clientIp = req.clientIp;
     // Store userInput in Firestore
     const docRef = await addDoc(collection(db, 'users', clientIp, 'quizResults'), {
@@ -57,7 +59,9 @@ app.post('/storeQuizResults', async (req, res) => {
     res.status(500).json({ error: 'Error storing user input: ' + error });
   }
 });
+
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

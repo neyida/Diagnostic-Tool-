@@ -1,6 +1,8 @@
+// Purpose: To store the user's diagnostic information in the database
 function submitForm(event) {
   event.preventDefault();
-  
+  var currentDate = new Date();
+  var dateTimeString = currentDate.toLocaleString();
   // Retrieve form data 
   const formData = {
       firstName: document.getElementById('firstName').value,
@@ -10,6 +12,7 @@ function submitForm(event) {
       phoneNumber: document.getElementById('phoneNumber').value,
       gradeLevel: document.getElementById('gradeLevel').value,
       satPsat: document.getElementById('satPsat').value,
+      time: dateTimeString
   };
 
   // Thank you message
