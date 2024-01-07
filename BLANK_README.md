@@ -34,10 +34,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Diagnostic-Tool-</h3>
+<h3 align="center">Diagnostic-Tool</h3>
 
   <p align="center">
-    project_description
+    This project is meant for a tutoring service to provide prospective students with a diagnostic to help both parties understand their preparedness and help drum enrollment.//
     <br />
     <a href="https://github.com/neyida/Diagnostic-Tool-"><strong>Explore the docs »</strong></a>
     <br />
@@ -85,7 +85,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+<!--Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description` -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,7 +122,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Create a Realtime Database at [https://console.firebase.google.com/](https://console.firebase.google.com/)
 2. Clone the repo
    ```sh
    git clone https://github.com/neyida/Diagnostic-Tool-.git
@@ -131,7 +131,7 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+4. Enter your API key from  in `app.js`
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```

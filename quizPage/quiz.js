@@ -16,7 +16,6 @@ let options = [
 let index = 0
 
 
-
 /**
  * Creates a quiz page with questions and answers.
  */
@@ -124,7 +123,6 @@ function getSelectedOption() {
     }
     return chosenAnswers;
 }
-
 /**
  * Sets the question, question image, and answer options for the quiz.
  */
