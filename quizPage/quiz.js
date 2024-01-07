@@ -16,7 +16,6 @@ let options = [
 let index = 0
 
 
-
 /**
  * Creates a quiz page with questions and answers.
  */
@@ -124,7 +123,6 @@ function getSelectedOption() {
     }
     return chosenAnswers;
 }
-
 /**
  * Sets the question, question image, and answer options for the quiz.
  */
@@ -137,23 +135,28 @@ function getResults() {
             correctness.push(false);
         }
     }
+    var currentDate = new Date();
+    var dateTimeString = currentDate.toLocaleString();
     console.log(correctness, chosenAnswers, correctAnswers);
     const quizResults = {
         answersCorrect: correctness,
         answersChosen: chosenAnswers,
-        answerKey: correctAnswers
+        answerKey: correctAnswers,
+        timeStamp: dateTimeString
     }
+
     console.log(quizResults)
+
     fetch('http://localhost:3000/storeQuizResults', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({quizResults }),
-  })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
     window.alert(correctness);
     // Moves to info page after submission to send results to
     window.location.href = '../infoPage/informationPage-frontend.html';

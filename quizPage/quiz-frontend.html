@@ -34,6 +34,8 @@
         </div>
 </body>
 <script>
+
+
     var questionNum = 10
     var answersChecked = {};
     for(var i = 0; i < questionNum; i++){
@@ -41,10 +43,6 @@
         createQuizPage();
     }
     createSubmitButton();
-
-    var numAnswered = 0;
-    
-    // Listener to check if all radio button groups with unique names have at least one checked radio button
     document.getElementById('next').addEventListener('click', function() {
         for(let groupNum = 1; groupNum < questionNum + 1; groupNum++){
                 var groupName = "question" + groupNum.toString();
@@ -62,14 +60,15 @@
                 }
         }
         if(numAnswered != questionNum){
-            window.alert("not all checked, misssing " + (questionNum - numAnswered) + " out of " + questionNum);
+            window.alert("Please answer all questions before continuing");
         }
         else{
             getResults();
         }
     });
-
-    
+    var numAnswered = 0;
+    //const showAlert = require('./alert.js');
+    // Listener to check if all radio button groups with unique names have at least one checked radio button
 </script>
 </html>
 <!-- END: abpxx6d04wxr -->
