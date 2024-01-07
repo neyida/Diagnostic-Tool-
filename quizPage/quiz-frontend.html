@@ -33,8 +33,16 @@
         <div id="quizBody">
         </div>
 </body>
-<script type="module">
-    import { showAlert } from './alerts/alert.js';
+<script>
+
+
+    var questionNum = 10
+    var answersChecked = {};
+    for(var i = 0; i < questionNum; i++){
+        answersChecked[i + 1] = false;
+        createQuizPage();
+    }
+    createSubmitButton();
     document.getElementById('next').addEventListener('click', function() {
         for(let groupNum = 1; groupNum < questionNum + 1; groupNum++){
                 var groupName = "question" + groupNum.toString();
@@ -52,28 +60,16 @@
                 }
         }
         if(numAnswered != questionNum){
-            showAlert();
+            window.alert("Please answer all questions before continuing");
         }
         else{
             getResults();
         }
     });
-
-</script>
-<script>
-    var questionNum = 10
-    var answersChecked = {};
-    for(var i = 0; i < questionNum; i++){
-        answersChecked[i + 1] = false;
-        createQuizPage();
-    }
-    createSubmitButton();
-
     var numAnswered = 0;
     //const showAlert = require('./alert.js');
     // Listener to check if all radio button groups with unique names have at least one checked radio button
 </script>
-<script type="module" src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </html>
 <!-- END: abpxx6d04wxr -->
 
