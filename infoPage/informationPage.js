@@ -36,7 +36,7 @@ function submitForm(event) {
   thankYouElement.style.display = 'block';
 
   //redirect to a different page after 12 seconds 
-  /*setTimeout(() => {
+  setTimeout(() => {
       window.location.href = 'https://peaceofpilearning.com/';
-  }, 12000);*/
+  }, 12000);
 }

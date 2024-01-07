@@ -2,15 +2,16 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
-//import { getAnalytics } from "firebase/analytics";
 import cors from 'cors';
 import requestIp from 'request-ip';
+//import sgMail from '@sendgrid/mail'; 
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(requestIp.mw());
 
+// npm install request-ip
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBw51dfHPhBl9_L5PEhtqLAAgL_44zIgyY",
@@ -27,6 +28,10 @@ const firebaseApp = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(firebaseApp);
 const db = getFirestore(firebaseApp)
 // Endpoint to store user input in Firebase
+
+//sgMail.setApiKey('YOUR_SENDGRID_API_KEY')
+
+
 app.post('/storeUserInputs', async (req, res) => {
   try {
     const formData = req.body.formData;
@@ -37,16 +42,26 @@ app.post('/storeUserInputs', async (req, res) => {
     });
     console.log('Document written with ID: ', docRef.id);
     res.status(200).json(`User input stored successfully with ID: ${docRef.id}`);
-  } catch (error) {
-    res.status(500).json({ error: 'Error storing user input: ' + error });
-  }
-});
+
+   //const msg = {
+//      to: 'neyidamichel@gmail.com', // Replace with the recipient's email address
+//      from: 'neyidamichel@gmail.com', // Replace with your sender email address
+//      subject: 'New User Submission',
+//      text: `A new user has submitted the following information:\n\n${JSON.stringify(formData)}`,
+//    };
+
+//    await sgMail.send(msg);
+ } catch (error) {
+   res.status(500).json({ error: 'Error storing user input: ' + error });
+ }
+    });
+
 // Other endpoints for data retrieval if needed
 app.post('/storeQuizResults', async (req, res) => {
   try {
     const quizResults = req.body.quizResults;
     console.log(quizResults);
-    const clientIp = req.clientIp;
+    const clientIp = req.ip;
     // Store userInput in Firestore
     const docRef = await addDoc(collection(db, 'users', clientIp, 'quizResults'), {
       quizResults
